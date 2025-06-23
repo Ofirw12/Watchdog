@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.20)
+project(watchdog)
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_SOURCE_DIR}/bin/debug)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_SOURCE_DIR}/bin/release)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_SOURCE_DIR}/bin/debug)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_SOURCE_DIR}/bin/release)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_SOURCE_DIR}/bin/debug)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_SOURCE_DIR}/bin/release)
+
+set(CMAKE_C_STANDARD_REQUIRED 90)
+set(CMAKE_C_STANDARD 90)
+set(CMAKE_C_FLAGS "-pedantic-errors -Wall -Werror -Wextra")
+set(CMAKE_C_FLAGS_DEBUG -g)
+set(CMAKE_C_FLAGS_RELEASE "-DNDEBUG -O3")
+set(CMAKE_C_EXTENSIONS OFF)
+
+add_compile_definitions(_POSIX_C_SOURCE=200112L)
+
+include_directories(include)
+
+add_subdirectory(src)
+add_subdirectory(test)
